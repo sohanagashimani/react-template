@@ -1,4 +1,3 @@
-// Type definitions for keypress.js Combo object
 export interface KeypressCombo {
   keys: Array<string>
   on_keydown?: () => void
@@ -45,7 +44,6 @@ export interface ShortcutInfo {
   visible?: boolean
 }
 
-// Context value interface
 export interface KeypressContextValue {
   listener: KeypressListener | null
   registerShortcut: (config: ShortcutConfig) => KeypressCombo | null

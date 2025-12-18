@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactKeypress } from './ReactKeypress'
+import { Panel } from './Panel'
 
 interface PanelDProps {
   isVisible: boolean
@@ -13,22 +13,11 @@ export const PanelD: React.FC<PanelDProps> = ({
   isMounted,
 }) => {
   return (
-    <ReactKeypress.Item
-      keys="shift d"
-      onPress={onToggle}
-      description="toggle D"
-      componentId="panel-d"
-      enabled={true}
-      visible={isMounted}
-    >
-      <div
-        className={`${
-          isVisible ? 'bg-blue-600' : 'bg-gray-600 opacity-50'
-        } text-white text-6xl flex items-center justify-center cursor-pointer border border-white min-h-full`}
-        onClick={onToggle}
-      >
-        D
-      </div>
-    </ReactKeypress.Item>
+    <Panel
+      letter="D"
+      isVisible={isVisible}
+      onToggle={onToggle}
+      showInHelp={isMounted}
+    />
   )
 }

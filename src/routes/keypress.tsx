@@ -34,7 +34,7 @@ function RouteComponent() {
 
   return (
     <ReactKeypress>
-      <div className="min-h-screen bg-gray-900 p-4">
+      <div tabIndex={0} className="min-h-screen bg-white p-4 outline-none">
         <div className="grid grid-cols-2 gap-4 h-[calc(100vh-200px)] mb-4">
           <PanelA isVisible={visibleA} onToggle={toggleA} />
           <PanelB isVisible={visibleB} onToggle={toggleB} />
@@ -59,7 +59,7 @@ function RouteComponent() {
           </button>
 
           <div className="text-right">
-            <HelpContainer />
+            <HelpContainer className="border border-gray-300 rounded-md p-2" />
           </div>
         </div>
       </div>

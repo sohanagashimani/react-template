@@ -2,7 +2,8 @@ import React, {
   createContext,
   useCallback,
   useContext,
-  useEffect,
+  useLayoutEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -38,21 +39,26 @@ const ReactKeypressComponent: React.FC<ReactKeypressProps> = ({ children }) => {
   const [activeShortcuts, setActiveShortcuts] = useState<Array<ShortcutInfo>>(
     [],
   )
+  const [isReady, setIsReady] = useState(false)
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (typeof window !== 'undefined' && window.keypress) {
+  useLayoutEffect(() => {
+    if (
+      typeof window !== 'undefined' &&
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      window.keypress
+    ) {
       listenerRef.current = new window.keypress.Listener()
       listenerRef.current.listen()
+      setIsReady(true)
+    }
 
-      return () => {
-        if (listenerRef.current) {
-          listenerRef.current.stop_listening()
-          listenerRef.current.reset()
-          listenerRef.current = null
-        }
-        shortcutsRef.current.clear()
+    return () => {
+      if (listenerRef.current) {
+        listenerRef.current.stop_listening()
+        listenerRef.current.reset()
+        listenerRef.current = null
       }
+      shortcutsRef.current.clear()
     }
   }, [])
 
@@ -123,12 +129,24 @@ const ReactKeypressComponent: React.FC<ReactKeypressProps> = ({ children }) => {
     [updateActiveShortcuts],
   )
 
-  const contextValue: KeypressContextValue = {
-    listener: listenerRef.current,
-    registerShortcut,
-    unregisterShortcut,
-    updateShortcutVisibility,
-    activeShortcuts,
+  const contextValue: KeypressContextValue = useMemo(
+    () => ({
+      listener: listenerRef.current,
+      registerShortcut,
+      unregisterShortcut,
+      updateShortcutVisibility,
+      activeShortcuts,
+    }),
+    [
+      registerShortcut,
+      unregisterShortcut,
+      updateShortcutVisibility,
+      activeShortcuts,
+    ],
+  )
+
+  if (!isReady) {
+    return null
   }
 
   return (

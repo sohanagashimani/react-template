@@ -19,7 +19,7 @@ export const HelpContainer: React.FC<HelpContainerProps> = ({
   }
 
   return (
-    <div className={`text-white ${className}`}>
+    <div className={`text-black ${className}`}>
       {activeShortcuts.map((shortcut, index) => {
         const componentName = shortcut.componentId
           .replace(/^panel-/, '')
