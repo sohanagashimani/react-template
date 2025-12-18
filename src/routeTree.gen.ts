@@ -9,38 +9,218 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SignalRouteImport } from './routes/signal'
+import { Route as NestedCheckboxRouteImport } from './routes/nestedCheckbox'
+import { Route as MultiPageFormRouteImport } from './routes/multiPageForm'
+import { Route as FileExplorerRouteImport } from './routes/fileExplorer'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as AutoSaveFormRouteImport } from './routes/auto-save-form'
+import { Route as AfkRouteImport } from './routes/afk'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MultiPageFormPage3RouteImport } from './routes/multiPageForm.page3'
+import { Route as MultiPageFormPage2RouteImport } from './routes/multiPageForm.page2'
+import { Route as MultiPageFormPage1RouteImport } from './routes/multiPageForm.page1'
 
+const SignalRoute = SignalRouteImport.update({
+  id: '/signal',
+  path: '/signal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NestedCheckboxRoute = NestedCheckboxRouteImport.update({
+  id: '/nestedCheckbox',
+  path: '/nestedCheckbox',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MultiPageFormRoute = MultiPageFormRouteImport.update({
+  id: '/multiPageForm',
+  path: '/multiPageForm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FileExplorerRoute = FileExplorerRouteImport.update({
+  id: '/fileExplorer',
+  path: '/fileExplorer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutoSaveFormRoute = AutoSaveFormRouteImport.update({
+  id: '/auto-save-form',
+  path: '/auto-save-form',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AfkRoute = AfkRouteImport.update({
+  id: '/afk',
+  path: '/afk',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MultiPageFormPage3Route = MultiPageFormPage3RouteImport.update({
+  id: '/page3',
+  path: '/page3',
+  getParentRoute: () => MultiPageFormRoute,
+} as any)
+const MultiPageFormPage2Route = MultiPageFormPage2RouteImport.update({
+  id: '/page2',
+  path: '/page2',
+  getParentRoute: () => MultiPageFormRoute,
+} as any)
+const MultiPageFormPage1Route = MultiPageFormPage1RouteImport.update({
+  id: '/page1',
+  path: '/page1',
+  getParentRoute: () => MultiPageFormRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/afk': typeof AfkRoute
+  '/auto-save-form': typeof AutoSaveFormRoute
+  '/dashboard': typeof DashboardRoute
+  '/fileExplorer': typeof FileExplorerRoute
+  '/multiPageForm': typeof MultiPageFormRouteWithChildren
+  '/nestedCheckbox': typeof NestedCheckboxRoute
+  '/signal': typeof SignalRoute
+  '/multiPageForm/page1': typeof MultiPageFormPage1Route
+  '/multiPageForm/page2': typeof MultiPageFormPage2Route
+  '/multiPageForm/page3': typeof MultiPageFormPage3Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/afk': typeof AfkRoute
+  '/auto-save-form': typeof AutoSaveFormRoute
+  '/dashboard': typeof DashboardRoute
+  '/fileExplorer': typeof FileExplorerRoute
+  '/multiPageForm': typeof MultiPageFormRouteWithChildren
+  '/nestedCheckbox': typeof NestedCheckboxRoute
+  '/signal': typeof SignalRoute
+  '/multiPageForm/page1': typeof MultiPageFormPage1Route
+  '/multiPageForm/page2': typeof MultiPageFormPage2Route
+  '/multiPageForm/page3': typeof MultiPageFormPage3Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/afk': typeof AfkRoute
+  '/auto-save-form': typeof AutoSaveFormRoute
+  '/dashboard': typeof DashboardRoute
+  '/fileExplorer': typeof FileExplorerRoute
+  '/multiPageForm': typeof MultiPageFormRouteWithChildren
+  '/nestedCheckbox': typeof NestedCheckboxRoute
+  '/signal': typeof SignalRoute
+  '/multiPageForm/page1': typeof MultiPageFormPage1Route
+  '/multiPageForm/page2': typeof MultiPageFormPage2Route
+  '/multiPageForm/page3': typeof MultiPageFormPage3Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/afk'
+    | '/auto-save-form'
+    | '/dashboard'
+    | '/fileExplorer'
+    | '/multiPageForm'
+    | '/nestedCheckbox'
+    | '/signal'
+    | '/multiPageForm/page1'
+    | '/multiPageForm/page2'
+    | '/multiPageForm/page3'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/afk'
+    | '/auto-save-form'
+    | '/dashboard'
+    | '/fileExplorer'
+    | '/multiPageForm'
+    | '/nestedCheckbox'
+    | '/signal'
+    | '/multiPageForm/page1'
+    | '/multiPageForm/page2'
+    | '/multiPageForm/page3'
+  id:
+    | '__root__'
+    | '/'
+    | '/afk'
+    | '/auto-save-form'
+    | '/dashboard'
+    | '/fileExplorer'
+    | '/multiPageForm'
+    | '/nestedCheckbox'
+    | '/signal'
+    | '/multiPageForm/page1'
+    | '/multiPageForm/page2'
+    | '/multiPageForm/page3'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AfkRoute: typeof AfkRoute
+  AutoSaveFormRoute: typeof AutoSaveFormRoute
+  DashboardRoute: typeof DashboardRoute
+  FileExplorerRoute: typeof FileExplorerRoute
+  MultiPageFormRoute: typeof MultiPageFormRouteWithChildren
+  NestedCheckboxRoute: typeof NestedCheckboxRoute
+  SignalRoute: typeof SignalRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signal': {
+      id: '/signal'
+      path: '/signal'
+      fullPath: '/signal'
+      preLoaderRoute: typeof SignalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nestedCheckbox': {
+      id: '/nestedCheckbox'
+      path: '/nestedCheckbox'
+      fullPath: '/nestedCheckbox'
+      preLoaderRoute: typeof NestedCheckboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/multiPageForm': {
+      id: '/multiPageForm'
+      path: '/multiPageForm'
+      fullPath: '/multiPageForm'
+      preLoaderRoute: typeof MultiPageFormRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fileExplorer': {
+      id: '/fileExplorer'
+      path: '/fileExplorer'
+      fullPath: '/fileExplorer'
+      preLoaderRoute: typeof FileExplorerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auto-save-form': {
+      id: '/auto-save-form'
+      path: '/auto-save-form'
+      fullPath: '/auto-save-form'
+      preLoaderRoute: typeof AutoSaveFormRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/afk': {
+      id: '/afk'
+      path: '/afk'
+      fullPath: '/afk'
+      preLoaderRoute: typeof AfkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +228,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/multiPageForm/page3': {
+      id: '/multiPageForm/page3'
+      path: '/page3'
+      fullPath: '/multiPageForm/page3'
+      preLoaderRoute: typeof MultiPageFormPage3RouteImport
+      parentRoute: typeof MultiPageFormRoute
+    }
+    '/multiPageForm/page2': {
+      id: '/multiPageForm/page2'
+      path: '/page2'
+      fullPath: '/multiPageForm/page2'
+      preLoaderRoute: typeof MultiPageFormPage2RouteImport
+      parentRoute: typeof MultiPageFormRoute
+    }
+    '/multiPageForm/page1': {
+      id: '/multiPageForm/page1'
+      path: '/page1'
+      fullPath: '/multiPageForm/page1'
+      preLoaderRoute: typeof MultiPageFormPage1RouteImport
+      parentRoute: typeof MultiPageFormRoute
+    }
   }
 }
 
+interface MultiPageFormRouteChildren {
+  MultiPageFormPage1Route: typeof MultiPageFormPage1Route
+  MultiPageFormPage2Route: typeof MultiPageFormPage2Route
+  MultiPageFormPage3Route: typeof MultiPageFormPage3Route
+}
+
+const MultiPageFormRouteChildren: MultiPageFormRouteChildren = {
+  MultiPageFormPage1Route: MultiPageFormPage1Route,
+  MultiPageFormPage2Route: MultiPageFormPage2Route,
+  MultiPageFormPage3Route: MultiPageFormPage3Route,
+}
+
+const MultiPageFormRouteWithChildren = MultiPageFormRoute._addFileChildren(
+  MultiPageFormRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AfkRoute: AfkRoute,
+  AutoSaveFormRoute: AutoSaveFormRoute,
+  DashboardRoute: DashboardRoute,
+  FileExplorerRoute: FileExplorerRoute,
+  MultiPageFormRoute: MultiPageFormRouteWithChildren,
+  NestedCheckboxRoute: NestedCheckboxRoute,
+  SignalRoute: SignalRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

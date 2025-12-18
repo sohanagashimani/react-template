@@ -1,0 +1,31 @@
+[
+  {
+    "id": "0",
+    "name": "public",
+    "isFolder": true,
+    "children": [
+      { "name": "favicon.ico", "isFolder": false, "id": "1" },
+      { "name": "logo192.png", "isFolder": false, "id": "2" },
+      { "name": "logo512.png", "isFolder": false, "id": "3" }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "src",
+    "isFolder": true,
+    "children": [
+      { "name": "components", "isFolder": true, "id": "5" },
+      { "name": "pages", "isFolder": true, "id": "6" }
+    ]
+  },
+  {
+    "id": "7",
+    "name": "index.html",
+    "isFolder": false
+  },
+  {
+    "id": "9",
+    "name": "package.json",
+    "isFolder": false
+  }
+]

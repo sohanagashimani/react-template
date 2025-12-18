@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Checkbox 1",
+    "children": [
+      {
+        "id": 2,
+        "name": "Checkbox 2",
+        "children": [
+          {
+            "id": 3,
+            "name": "Checkbox 3"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Checkbox 4",
+        "children": [
+          { "id": 5, "name": "Checkbox 5" },
+          {
+            "id": 6,
+            "name": "Checkbox 6",
+            "children": [{ "id": 11, "name": "Checkbox 11" }]
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Checkbox 10"
+      },
+      {
+        "id": 9,
+        "name": "Checkbox 9"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Checkbox 8"
+  }
+]
