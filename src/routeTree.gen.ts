@@ -9,50 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as KeypressRouteImport } from './routes/keypress'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const KeypressRoute = KeypressRouteImport.update({
+  id: '/keypress',
+  path: '/keypress',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/keypress': typeof KeypressRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/keypress': typeof KeypressRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/keypress': typeof KeypressRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/keypress'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/keypress'
+  id: '__root__' | '/keypress'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  KeypressRoute: typeof KeypressRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/keypress': {
+      id: '/keypress'
+      path: '/keypress'
+      fullPath: '/keypress'
+      preLoaderRoute: typeof KeypressRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  KeypressRoute: KeypressRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
